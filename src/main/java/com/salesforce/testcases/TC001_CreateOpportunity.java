@@ -6,23 +6,29 @@ import org.testng.annotations.Test;
 import com.framework.testng.api.base.ProjectSpecificMethods;
 import com.salesforce.pages.LoginPage;
 
-public class TC001_VerifyLogin extends ProjectSpecificMethods{
+public class TC001_CreateOpportunity extends ProjectSpecificMethods{
 	@BeforeTest
 	public void setValues() {
-		testcaseName = "VerifyLogin";
-		testDescription ="Verify Login functionality with positive data";
-		authors="Hari";
+		testcaseName = "Create Opportunity";
+		testDescription ="Create opportunity with positive data";
+		authors="Vidhu";
 		category ="Smoke";
 		excelFileName="Login";
 	}
 	
 	@Test(dataProvider = "fetchData")
-	public void runLogin(String username, String password) {
+	public void runLogin(String username, String password) throws InterruptedException {
 		new LoginPage()
 		.enterUsername(username)
 		.enterPassword(password)
 		.clickLogin()
-		.verifyHomePage();
+		.verifyHomePage()
+		.clickGlobalAction()
+		.clickNewOpportunity()
+		.sendOpportunityName()
+		.sendDate()
+		.selectStage()
+		.clickSave();
 
 	}
 

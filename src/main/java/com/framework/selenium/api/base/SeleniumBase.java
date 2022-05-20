@@ -156,7 +156,6 @@ public class SeleniumBase extends Reporter implements Browser, Element  {
 		}catch (NoSuchElementException e) {
 			reportStep("The Element " + ele + " is not found", "fail");
 		}
-
 		String text = "";
 		try {
 			try {
